@@ -171,7 +171,8 @@ function App() {
               alignItems: "center",
               alignContent: "center",
               minWidth: "100%",
-              minHeight: "90.5%",
+              minHeight: "100vh",
+              overflow: "hidden",
             }}
           >
             <Box>
@@ -205,7 +206,8 @@ function App() {
               justifyContent: "center",
               alignItems: "center",
               minWidth: "100%",
-              minHeight: "90.5%",
+              minHeight: "100vh",
+              overflow: "hidden",
             }}
           >
             <Box>
