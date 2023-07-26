@@ -24,33 +24,11 @@ import InfoIcon from "@mui/icons-material/Info";
 import MenuIcon from "@mui/icons-material/Menu";
 import WorkIcon from "@mui/icons-material/Work";
 import myAvatar from "./assets/circle_avatar.png";
+import codingIllustration from "./assets/coding_illustration.png";
 import myTheme from "./theme";
 
 const drawerWidth = 240;
 const pages = ["Home", "About", "Experience", "Skills", "Projects", "Contact"];
-
-const drawer = (
-  <div>
-    <Toolbar />
-    <List>
-      {pages.map((page) => (
-        <ListItem key={page} disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              {page === "Home" ? <HomeIcon /> : null}
-              {page === "About" ? <InfoIcon /> : null}
-              {page === "Experience" ? <WorkIcon /> : null}
-              {page === "Skills" ? <CodeIcon /> : null}
-              {page === "Projects" ? <FolderIcon /> : null}
-              {page === "Contact" ? <ContactMailIcon /> : null}
-            </ListItemIcon>
-            <ListItemText primary={page} />
-          </ListItemButton>
-        </ListItem>
-      ))}
-    </List>
-  </div>
-);
 
 function App() {
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
@@ -59,12 +37,44 @@ function App() {
     setDrawerOpen(!drawerOpen);
   };
 
+  const handleNavigationClick = (section: string) => {
+    const element = document.getElementById(section);
+    element?.scrollIntoView({ behavior: "smooth" });
+  };
+
   const handleRecruitButtonClick = () => {
     const email = "mhafiz9676@gmail.com";
     const link = `mailto:${email}`;
 
     window.location.href = link;
   };
+
+  const drawer = (
+    <div>
+      <Toolbar />
+      <List>
+        {pages.map((page) => (
+          <ListItem key={page} disablePadding>
+            <ListItemButton
+              onClick={() => {
+                handleNavigationClick(page);
+              }}
+            >
+              <ListItemIcon>
+                {page === "Home" ? <HomeIcon /> : null}
+                {page === "About" ? <InfoIcon /> : null}
+                {page === "Experience" ? <WorkIcon /> : null}
+                {page === "Skills" ? <CodeIcon /> : null}
+                {page === "Projects" ? <FolderIcon /> : null}
+                {page === "Contact" ? <ContactMailIcon /> : null}
+              </ListItemIcon>
+              <ListItemText primary={page} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </div>
+  );
 
   return (
     <ThemeProvider theme={myTheme}>
@@ -90,6 +100,9 @@ function App() {
                 {pages.map((page) => (
                   <Button
                     key={page}
+                    onClick={() => {
+                      handleNavigationClick(page);
+                    }}
                     sx={{ color: "white", display: "block", my: 2 }}
                   >
                     {page}
@@ -145,7 +158,7 @@ function App() {
             overflow: "auto",
           }}
         >
-          <Toolbar />
+          <Toolbar id="Home" />
           <Container
             component="section"
             sx={{
@@ -153,17 +166,16 @@ function App() {
               color: "#FFFFFF",
               display: "flex",
               flexDirection: "row",
-              justifyContent: "space-evenly",
-              alignItems: "center",
               flexWrap: "wrap",
+              justifyContent: { xs: "center", md: "space-evenly" },
+              alignItems: "center",
+              alignContent: "center",
               minWidth: "100%",
-              minHeight: "90.8%",
+              minHeight: "90.5%",
             }}
           >
             <Box>
-              <Typography variant="h3">
-                The world need more heroes.
-              </Typography>
+              <Typography variant="h3">The world need more heroes.</Typography>
               <Typography variant="h1">My name is Hafiz</Typography>
               <Typography variant="h3">
                 and I'm Spider-Man.{" "}
@@ -180,6 +192,50 @@ function App() {
               </Button>
             </Box>
             <img src={myAvatar} alt="Avatar" width={300} />
+          </Container>
+          <Container
+            component="section"
+            id="About"
+            sx={{
+              backgroundColor: "#FFFFFF",
+              color: "#C62828",
+              display: "flex",
+              flexDirection: "column",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              alignItems: "center",
+              minWidth: "100%",
+              minHeight: "90.5%",
+            }}
+          >
+            <Box>
+              <Typography variant="h4">About Me</Typography>
+            </Box>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                flexWrap: { xs: "wrap", sm: "nowrap" },
+                justifyContent: "space-around",
+                alignItems: "center",
+                minWidth: "100%",
+              }}
+            >
+              <img
+                src={codingIllustration}
+                alt="Just a pic of me coding"
+                width={300}
+              />
+              <Typography variant="h5" textAlign="justify">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </Typography>
+            </Box>
           </Container>
         </Box>
       </Box>
