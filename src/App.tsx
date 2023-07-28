@@ -18,10 +18,13 @@ import CloseIcon from "@mui/icons-material/Close";
 import CodeIcon from "@mui/icons-material/Code";
 import ContactMailIcon from "@mui/icons-material/ContactMail";
 import FolderIcon from "@mui/icons-material/Folder";
+import GitHubIcon from "@mui/icons-material/GitHub";
 import HomeIcon from "@mui/icons-material/Home";
 import IconButton from "@mui/material/IconButton";
 import InfoIcon from "@mui/icons-material/Info";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import MenuIcon from "@mui/icons-material/Menu";
+import TwitterIcon from "@mui/icons-material/Twitter";
 import WorkIcon from "@mui/icons-material/Work";
 import myAvatar from "./assets/circle_avatar.png";
 import codingIllustration from "./assets/coding_illustration.png";
@@ -158,9 +161,10 @@ function App() {
             overflow: "auto",
           }}
         >
-          <Toolbar id="Home" />
+          <Toolbar sx={{ visibility: "hidden" }} />
           <Container
             component="section"
+            id="Home"
             sx={{
               backgroundColor: "#C62828",
               color: "#FFFFFF",
@@ -196,7 +200,7 @@ function App() {
                 Recruit Me
               </Button>
             </Box>
-            <img src={myAvatar} alt="Avatar" width={300} />
+            <img src={myAvatar} alt="Avatar" width={240} />
           </Container>
           <Container
             component="section"
@@ -214,9 +218,9 @@ function App() {
               overflow: "hidden",
             }}
           >
-            <Box>
-              <Typography variant="h4">About Me</Typography>
-            </Box>
+            <Typography variant="h4" sx={{ paddingTop: "3.2rem" }}>
+              About Me
+            </Typography>
             <Box
               sx={{
                 display: "flex",
@@ -230,17 +234,81 @@ function App() {
               <img
                 src={codingIllustration}
                 alt="Just a pic of me coding"
-                width={300}
+                width={240}
               />
-              <Typography variant="h5" textAlign="justify">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </Typography>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-around",
+                  margin: "0.8rem"
+                }}
+              >
+                <Typography
+                  variant="h5"
+                  textAlign="justify"
+                  marginTop="2rem"
+                  marginBottom="0.8rem"
+                >
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
+                </Typography>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                    flexWrap: "nowrap",
+                    justifyContent: { xs: "space-between", sm: "flex-start" },
+                    alignItems: "center",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "row",
+                      flexWrap: "nowrap",
+                    }}
+                  >
+                    <IconButton
+                      color="inherit"
+                      href="https://www.linkedin.com/in/mhz96/"
+                      target="_blank"
+                      sx={{
+                        paddingLeft: 0,
+                        paddingRight: { xs: "0.4rem", sm: "0.8rem" },
+                      }}
+                    >
+                      <LinkedInIcon />
+                    </IconButton>
+                    <IconButton
+                      color="inherit"
+                      href="https://twitter.com/mssngnnja"
+                      target="_blank"
+                      sx={{ paddingX: { xs: "0.4rem", sm: "0.8rem" } }}
+                    >
+                      <TwitterIcon />
+                    </IconButton>
+                    <IconButton
+                      color="inherit"
+                      href="https://github.com/nzmksk"
+                      target="_blank"
+                      sx={{ paddingX: { xs: "0.4rem", sm: "0.8rem" } }}
+                    >
+                      <GitHubIcon />
+                    </IconButton>
+                  </Box>
+
+                  <Button variant="contained" sx={{ marginLeft: "0.8rem" }}>
+                    Download CV
+                  </Button>
+                </Box>
+              </Box>
             </Box>
           </Container>
         </Box>
