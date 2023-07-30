@@ -44,7 +44,7 @@ function App() {
 
   const handleNavigationClick = (section: string) => {
     const element = document.getElementById(section);
-    element?.scrollIntoView({ behavior: "smooth" });
+    element?.scrollIntoView({ behavior: "smooth", block: "end" });
   };
 
   const handleRecruitButtonClick = () => {
@@ -360,10 +360,10 @@ function App() {
               minWidth: "100%",
               minHeight: { xs: "calc(100vh - 56px)", sm: "calc(100vh - 68px)" },
               overflow: "hidden",
-              padding: "1.6rem"
+              padding: "1.6rem",
             }}
           >
-            <Grid container spacing={2} sx={{rowGap: "1.6rem"}}>
+            <Grid container spacing={2} sx={{ rowGap: "1.6rem" }}>
               <Grid item xs={12} sm={6} md={4}>
                 <Paper
                   sx={{
@@ -376,7 +376,7 @@ function App() {
                     alignItems: "center",
                     borderRadius: 4,
                     height: "100%",
-                    padding: "0.8rem"
+                    padding: "0.8rem",
                   }}
                 >
                   <Typography variant="h4" textAlign="center">
@@ -453,7 +453,7 @@ function App() {
                     alignItems: "center",
                     borderRadius: 4,
                     height: "100%",
-                    padding: "0.8rem"
+                    padding: "0.8rem",
                   }}
                 >
                   <Typography variant="h4" textAlign="center">
@@ -520,7 +520,7 @@ function App() {
                     alignItems: "center",
                     borderRadius: 4,
                     height: "100%",
-                    padding: "0.8rem"
+                    padding: "0.8rem",
                   }}
                 >
                   <Typography variant="h4" textAlign="center">
@@ -562,7 +562,7 @@ function App() {
                     alignItems: "center",
                     borderRadius: 4,
                     height: "100%",
-                    padding: "0.8rem"
+                    padding: "0.8rem",
                   }}
                 >
                   <Typography variant="h4" textAlign="center">
@@ -579,17 +579,17 @@ function App() {
                       gap: 1,
                     }}
                   >
-                     <img
+                    <img
                       src="https://seeklogo.com/images/J/jest-logo-F9901EBBF7-seeklogo.com.png"
                       alt="Jest"
                       height={50}
                     />
-                     <img
+                    <img
                       src="https://cdn.worldvectorlogo.com/logos/robot-framework.svg"
                       alt="Robot Framework"
                       height={50}
                     />
-                     <img
+                    <img
                       src="https://seeklogo.com/images/S/selenium-logo-A1B53CEFB0-seeklogo.com.png"
                       alt="Selenium"
                       height={50}
@@ -634,7 +634,7 @@ function App() {
                     alignItems: "center",
                     borderRadius: 4,
                     height: "100%",
-                    padding: "0.8rem"
+                    padding: "0.8rem",
                   }}
                 >
                   <Typography variant="h4" textAlign="center">
@@ -681,7 +681,7 @@ function App() {
                     alignItems: "center",
                     borderRadius: 4,
                     height: "100%",
-                    padding: "0.8rem"
+                    padding: "0.8rem",
                   }}
                 >
                   <Typography variant="h4" textAlign="center">
@@ -703,7 +703,7 @@ function App() {
                       alt="Windows"
                       height={50}
                     />
-                     <img
+                    <img
                       src="https://cdn.worldvectorlogo.com/logos/linux-tux.svg"
                       alt="Linux"
                       height={50}
