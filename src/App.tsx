@@ -44,7 +44,13 @@ function App() {
 
   const handleNavigationClick = (section: string) => {
     const element = document.getElementById(section);
-    element?.scrollIntoView({ behavior: "smooth", block: "end" });
+    const isMobile = window.innerWidth <= 600;
+
+    if (isMobile) {
+      element?.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      element?.scrollIntoView({ behavior: "smooth", block: "end" });
+    }
   };
 
   const handleRecruitButtonClick = () => {
@@ -723,6 +729,23 @@ function App() {
               </Grid>
             </Grid>
           </Container>
+          <Container
+            component="section"
+            id="Projects"
+            sx={{
+              backgroundColor: "#FFFFFF",
+              color: "#C62828",
+              display: "flex",
+              flexDirection: "column",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              alignItems: "center",
+              minWidth: "100%",
+              minHeight: { xs: "calc(100vh - 56px)", sm: "calc(100vh - 68px)" },
+              overflow: "hidden",
+              padding: "1.6rem",
+            }}
+          ></Container>
         </Box>
       </Box>
     </ThemeProvider>
