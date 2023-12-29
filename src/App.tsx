@@ -553,6 +553,11 @@ function App() {
                       alt="Flutter"
                       height={50}
                     />
+                    <img
+                      src="https://seeklogo.com/images/A/android-studio-logo-1EE788C6EC-seeklogo.com.png"
+                      alt="Android Studio"
+                      height={50}
+                    />
                   </Box>
                 </Paper>
               </Grid>
@@ -618,6 +623,16 @@ function App() {
                     <img
                       src="https://cdn.worldvectorlogo.com/logos/docker-4.svg"
                       alt="Docker"
+                      height={50}
+                    />
+                    <img
+                      src="https://seeklogo.com/images/V/vercel-logo-F748E39008-seeklogo.com.png"
+                      alt="Vercel"
+                      height={50}
+                    />
+                    <img
+                      src="https://cdn.worldvectorlogo.com/logos/firebase-1.svg"
+                      alt="Firebase"
                       height={50}
                     />
                     <img
