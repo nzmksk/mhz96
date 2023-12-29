@@ -38,6 +38,17 @@ const pages = ["Home", "About", "Skills", "Projects", "Contact"];
 function App() {
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
 
+  const fetchMyRepositories = async () => {
+    try {
+      const response = await fetch(`https://api.github.com/users/nzmksk/repos`);
+      const repositories = await response.json();
+      return repositories;
+    } catch (error) {
+      console.error(error);
+      throw new Error("Failed to fetch repositories");
+    }
+  };
+
   const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen);
   };
