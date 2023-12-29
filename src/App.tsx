@@ -32,30 +32,34 @@ import myAvatar from "./assets/circle_avatar.png";
 import codingIllustration from "./assets/coding_illustration.png";
 import myTheme from "./theme";
 
-const drawerWidth = 240;
-const pages = ["Home", "About", "Skills", "Projects", "Contact"];
+const drawerWidth: number = 240;
+const pages: string[] = ["Home", "About", "Skills", "Projects", "Contact"];
 
 function App() {
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
 
-  const fetchMyRepositories = async () => {
+  const fetchMyRepositories: () => Promise<any> = async () => {
     try {
-      const response = await fetch(`https://api.github.com/users/nzmksk/repos`);
-      const repositories = await response.json();
+      const response: Response = await fetch(
+        `https://api.github.com/users/nzmksk/repos`
+      );
+      const repositories: any = await response.json();
       return repositories;
-    } catch (error) {
+    } catch (error: any | unknown) {
       console.error(error);
       throw new Error("Failed to fetch repositories");
     }
   };
 
-  const handleDrawerToggle = () => {
+  const handleDrawerToggle: () => void = () => {
     setDrawerOpen(!drawerOpen);
   };
 
-  const handleNavigationClick = (section: string) => {
-    const element = document.getElementById(section);
-    const isMobile = window.innerWidth <= 600;
+  const handleNavigationClick: (section: string) => void = (
+    section: string
+  ) => {
+    const element: HTMLElement | null = document.getElementById(section);
+    const isMobile: boolean = window.innerWidth <= 600;
 
     if (isMobile) {
       element?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -64,18 +68,18 @@ function App() {
     }
   };
 
-  const handleRecruitButtonClick = () => {
-    const email = "mhafiz9676@gmail.com";
-    const link = `mailto:${email}`;
+  const handleRecruitButtonClick: () => void = () => {
+    const email: string = "mhafiz9676@gmail.com";
+    const link: string = `mailto:${email}`;
 
     window.location.href = link;
   };
 
-  const drawer = (
+  const drawer: JSX.Element = (
     <div>
       <Toolbar />
       <List>
-        {pages.map((page) => (
+        {pages.map((page: string) => (
           <ListItem key={page} disablePadding>
             <ListItemButton
               onClick={() => {
@@ -119,7 +123,7 @@ function App() {
                 </IconButton>
               </Box>
               <Box sx={{ display: { xs: "none", sm: "flex" }, flexGrow: 1 }}>
-                {pages.map((page) => (
+                {pages.map((page: string) => (
                   <Button
                     key={page}
                     onClick={() => {
