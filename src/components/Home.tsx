@@ -1,17 +1,12 @@
-import {
-  Box,
-  Button,
-  Container,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Container, Typography } from "@mui/material";
 import myAvatar from "../assets/circle_avatar.png";
 
 const handleRecruitButtonClick: () => void = () => {
-    const email: string = "mhafiz9676@gmail.com";
-    const link: string = `mailto:${email}`;
+  const email: string = "mhafiz9676@gmail.com";
+  const link: string = `mailto:${email}`;
 
-    window.location.href = link;
-  };
+  window.location.href = link;
+};
 
 const Home = () => {
   return (
