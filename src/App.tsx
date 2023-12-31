@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   AppBar,
   Box,
@@ -35,21 +35,20 @@ import myTheme from "./theme";
 const drawerWidth: number = 240;
 const pages: string[] = ["Home", "About", "Skills", "Projects", "Contact"];
 
+interface iRepository {
+  id: number;
+  name: string;
+  html_url: string;
+  description: string;
+  created_at: string;
+  updated_at: string;
+  language: string;
+  topics: string[];
+}
+
 function App() {
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
-
-  const fetchMyRepositories: () => Promise<any> = async () => {
-    try {
-      const response: Response = await fetch(
-        `https://api.github.com/users/nzmksk/repos`
-      );
-      const repositories: any = await response.json();
-      return repositories;
-    } catch (error: any | unknown) {
-      console.error(error);
-      throw new Error("Failed to fetch repositories");
-    }
-  };
+  const [repositories, setRepositories] = useState<iRepository[]>([]);
 
   const handleDrawerToggle: () => void = () => {
     setDrawerOpen(!drawerOpen);
@@ -74,6 +73,22 @@ function App() {
 
     window.location.href = link;
   };
+
+  useEffect(() => {
+    async function fetchRepositories() {
+      try {
+        const response: Response = await fetch(
+          `https://api.github.com/users/nzmksk/repos`
+        );
+        const repositories: any = await response.json();
+        setRepositories(repositories);
+      } catch (error: unknown) {
+        console.error(error);
+      }
+    }
+
+    fetchRepositories();
+  }, []);
 
   const drawer: JSX.Element = (
     <div>
@@ -770,12 +785,16 @@ function App() {
               flexWrap: "wrap",
               justifyContent: "center",
               alignItems: "center",
-              minWidth: "100%",
+              // minWidth: "100%",
               minHeight: { xs: "calc(100vh - 56px)", sm: "calc(100vh - 68px)" },
               overflow: "hidden",
               padding: "1.6rem",
             }}
-          ></Container>
+          >
+            {repositories.map((repository) => {
+              return repository.name;
+            })}
+          </Container>
         </Box>
       </Box>
     </ThemeProvider>
