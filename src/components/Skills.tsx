@@ -19,6 +19,7 @@ const Skills = () => {
         padding: "1.6rem",
       }}
     >
+      <Typography variant="h2" sx={{ color: "#FFFFFFF" }}>Skills</Typography>
       <Grid container spacing={2} sx={{ rowGap: "1.6rem" }}>
         <Grid item xs={12} sm={6} md={4}>
           <Paper
