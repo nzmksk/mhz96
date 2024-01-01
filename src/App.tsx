@@ -67,8 +67,8 @@ function App() {
           }
         );
         filteredRepositories.sort(function (a: tRepository, b: tRepository) {
-          let updated_at_a: number = new Date(a.updated_at).getTime();
-          let updated_at_b: number = new Date(b.updated_at).getTime();
+          let updated_at_a: number = new Date(a.pushed_at).getTime();
+          let updated_at_b: number = new Date(b.pushed_at).getTime();
           return updated_at_b - updated_at_a;
         });
 
@@ -79,7 +79,7 @@ function App() {
         );
         topSixRepositories.map((repo: tRepository) => {
           repo.created_at = new Date(repo.created_at).toUTCString();
-          repo.updated_at = new Date(repo.updated_at).toUTCString();
+          repo.pushed_at = new Date(repo.pushed_at).toUTCString();
 
           return repo;
         });

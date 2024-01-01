@@ -45,7 +45,7 @@ const Projects = (props: iRepositoryProps) => {
               <Typography>{repository.name}</Typography>
               <Typography>{repository.description}</Typography>
               <Typography>Created at: {repository.created_at}</Typography>
-              <Typography>Updated at: {repository.updated_at}</Typography>
+              <Typography>Updated at: {repository.pushed_at}</Typography>
               <Typography>{repository.language}</Typography>
               <Typography>{repository.topics}</Typography>
             </CardContent>
