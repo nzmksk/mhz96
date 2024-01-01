@@ -26,7 +26,7 @@ const Home = () => {
         alignItems: "center",
         alignContent: "space-evenly",
         minWidth: "100%",
-        minHeight: { xs: "calc(100% - 56px)", sm: "calc(100% - 68px)" },
+        minHeight: { xs: "calc(100vh - 56px)", sm: "calc(100vh - 68px)" },
         overflow: "hidden",
       }}
     >
