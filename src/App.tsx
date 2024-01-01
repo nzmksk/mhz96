@@ -3,6 +3,9 @@ import {
   AppBar,
   Box,
   Button,
+  Card,
+  CardActions,
+  CardContent,
   Container,
   Drawer,
   List,
@@ -11,6 +14,7 @@ import {
   ListItemIcon,
   ListItemText,
   Toolbar,
+  Typography,
 } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import CloseIcon from "@mui/icons-material/Close";
@@ -69,7 +73,31 @@ function App() {
           `https://api.github.com/users/nzmksk/repos`
         );
         const repositories: any = await response.json();
-        setRepositories(repositories);
+
+        // Filter repositories without description or languages.
+        const filteredRepositories: iRepository[] = repositories.filter(
+          (repo: iRepository) => {
+            return repo.description && repo.language;
+          }
+        );
+        filteredRepositories.sort(function (a: iRepository, b: iRepository) {
+          let updated_at_a: number = new Date(a.updated_at).getTime();
+          let updated_at_b: number = new Date(b.updated_at).getTime();
+          return updated_at_b - updated_at_a;
+        });
+
+        // Show only the latest 6 repositories.
+        const topSixRepositories: iRepository[] = filteredRepositories.slice(
+          0,
+          6
+        );
+        topSixRepositories.map((repo: iRepository) => {
+          repo.created_at = new Date(repo.created_at).toUTCString();
+          repo.updated_at = new Date(repo.updated_at).toUTCString();
+
+          return repo;
+        });
+        setRepositories(topSixRepositories);
       } catch (error: unknown) {
         console.error(error);
       }
@@ -199,18 +227,47 @@ function App() {
               backgroundColor: "#FFFFFF",
               color: "#C62828",
               display: "flex",
-              flexDirection: "column",
+              flexDirection: "row",
               flexWrap: "wrap",
               justifyContent: "center",
               alignItems: "center",
-              // minWidth: "100%",
+              minWidth: "100%",
               minHeight: { xs: "calc(100vh - 56px)", sm: "calc(100vh - 68px)" },
               overflow: "hidden",
               padding: "1.6rem",
             }}
           >
+            <Typography
+              sx={{ display: "block", width: "100%", textAlign: "center" }}
+            >
+              Projects
+            </Typography>
             {repositories.map((repository) => {
-              return repository.name;
+              return (
+                <Card
+                  sx={{
+                    maxWidth: "300px",
+                    margin: "1.6rem",
+                    backgroundColor: "#C62828",
+                    color: "#FFFFFF",
+                    borderRadius: 4,
+                  }}
+                >
+                  <CardContent>
+                    <Typography>{repository.name}</Typography>
+                    <Typography>{repository.description}</Typography>
+                    <Typography>Created at: {repository.created_at}</Typography>
+                    <Typography>Updated at: {repository.updated_at}</Typography>
+                    <Typography>{repository.language}</Typography>
+                    <Typography>{repository.topics}</Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button href={repository.html_url} target="_blank">
+                      Source Code
+                    </Button>
+                  </CardActions>
+                </Card>
+              );
             })}
           </Container>
         </Box>
