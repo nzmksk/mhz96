@@ -3,9 +3,6 @@ import {
   AppBar,
   Box,
   Button,
-  Card,
-  CardActions,
-  CardContent,
   Container,
   Drawer,
   List,
@@ -14,7 +11,6 @@ import {
   ListItemIcon,
   ListItemText,
   Toolbar,
-  Typography,
 } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import CloseIcon from "@mui/icons-material/Close";
@@ -29,24 +25,15 @@ import myTheme from "./theme";
 import Home from "./components/Home";
 import About from "./components/About";
 import Skills from "./components/Skills";
+import Projects from "./components/Projects";
+import { tRepository } from "repositoryType";
 
 const drawerWidth: number = 240;
 const pages: string[] = ["Home", "About", "Skills", "Projects"];
 
-interface iRepository {
-  id: number;
-  name: string;
-  html_url: string;
-  description: string;
-  created_at: string;
-  updated_at: string;
-  language: string;
-  topics: string[];
-}
-
 function App() {
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
-  const [repositories, setRepositories] = useState<iRepository[]>([]);
+  const [repositories, setRepositories] = useState<tRepository[]>([]);
 
   const handleDrawerToggle: () => void = () => {
     setDrawerOpen(!drawerOpen);
@@ -74,23 +61,23 @@ function App() {
         const repositories: any = await response.json();
 
         // Filter repositories without description or languages.
-        const filteredRepositories: iRepository[] = repositories.filter(
-          (repo: iRepository) => {
+        const filteredRepositories: tRepository[] = repositories.filter(
+          (repo: tRepository) => {
             return repo.description && repo.language;
           }
         );
-        filteredRepositories.sort(function (a: iRepository, b: iRepository) {
+        filteredRepositories.sort(function (a: tRepository, b: tRepository) {
           let updated_at_a: number = new Date(a.updated_at).getTime();
           let updated_at_b: number = new Date(b.updated_at).getTime();
           return updated_at_b - updated_at_a;
         });
 
         // Show only the latest 6 repositories.
-        const topSixRepositories: iRepository[] = filteredRepositories.slice(
+        const topSixRepositories: tRepository[] = filteredRepositories.slice(
           0,
           6
         );
-        topSixRepositories.map((repo: iRepository) => {
+        topSixRepositories.map((repo: tRepository) => {
           repo.created_at = new Date(repo.created_at).toUTCString();
           repo.updated_at = new Date(repo.updated_at).toUTCString();
 
@@ -218,56 +205,7 @@ function App() {
           <Home />
           <About />
           <Skills />
-          <Container
-            component="section"
-            id="Projects"
-            sx={{
-              backgroundColor: "#FFFFFF",
-              color: "#C62828",
-              display: "flex",
-              flexDirection: "row",
-              flexWrap: "wrap",
-              justifyContent: "center",
-              alignItems: "center",
-              minWidth: "100%",
-              minHeight: { xs: "calc(100vh - 56px)", sm: "calc(100vh - 68px)" },
-              overflow: "hidden",
-              padding: "1.6rem",
-            }}
-          >
-            <Typography
-              sx={{ display: "block", width: "100%", textAlign: "center" }}
-            >
-              Projects
-            </Typography>
-            {repositories.map((repository) => {
-              return (
-                <Card
-                  sx={{
-                    maxWidth: "300px",
-                    margin: "1.6rem",
-                    backgroundColor: "#C62828",
-                    color: "#FFFFFF",
-                    borderRadius: 4,
-                  }}
-                >
-                  <CardContent>
-                    <Typography>{repository.name}</Typography>
-                    <Typography>{repository.description}</Typography>
-                    <Typography>Created at: {repository.created_at}</Typography>
-                    <Typography>Updated at: {repository.updated_at}</Typography>
-                    <Typography>{repository.language}</Typography>
-                    <Typography>{repository.topics}</Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button href={repository.html_url} target="_blank">
-                      Source Code
-                    </Button>
-                  </CardActions>
-                </Card>
-              );
-            })}
-          </Container>
+          <Projects repositories={repositories} />
         </Box>
       </Box>
     </ThemeProvider>
