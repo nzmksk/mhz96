@@ -19,7 +19,6 @@ import {
 import { ThemeProvider } from "@mui/material/styles";
 import CloseIcon from "@mui/icons-material/Close";
 import CodeIcon from "@mui/icons-material/Code";
-import ContactMailIcon from "@mui/icons-material/ContactMail";
 import FolderIcon from "@mui/icons-material/Folder";
 import HomeIcon from "@mui/icons-material/Home";
 import IconButton from "@mui/material/IconButton";
@@ -32,7 +31,7 @@ import About from "./components/About";
 import Skills from "./components/Skills";
 
 const drawerWidth: number = 240;
-const pages: string[] = ["Home", "About", "Skills", "Projects", "Contact"];
+const pages: string[] = ["Home", "About", "Skills", "Projects"];
 
 interface iRepository {
   id: number;
@@ -123,7 +122,6 @@ function App() {
                 {page === "Experience" ? <WorkIcon /> : null}
                 {page === "Skills" ? <CodeIcon /> : null}
                 {page === "Projects" ? <FolderIcon /> : null}
-                {page === "Contact" ? <ContactMailIcon /> : null}
               </ListItemIcon>
               <ListItemText primary={page} />
             </ListItemButton>
