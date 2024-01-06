@@ -21,6 +21,8 @@ import IconButton from "@mui/material/IconButton";
 import InfoIcon from "@mui/icons-material/Info";
 import MenuIcon from "@mui/icons-material/Menu";
 import WorkIcon from "@mui/icons-material/Work";
+import { SpeedInsights } from "@vercel/speed-insights/react";
+
 import myTheme from "./theme";
 import Home from "./components/Home";
 import About from "./components/About";
@@ -208,6 +210,7 @@ function App() {
           <Projects repositories={repositories} />
         </Box>
       </Box>
+      <SpeedInsights />
     </ThemeProvider>
   );
 }
