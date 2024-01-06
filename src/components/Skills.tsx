@@ -1,4 +1,175 @@
-import { Box, Container, Grid, Paper, Typography } from "@mui/material";
+import { Avatar, Box, Container, Grid, Paper, Typography } from "@mui/material";
+import { tImage } from "imageType";
+
+const frontEndSkills: tImage[] = [
+  {
+    name: "HTML5",
+    source: "https://cdn.worldvectorlogo.com/logos/html-1.svg",
+  },
+  {
+    name: "CSS3",
+    source: "https://cdn.worldvectorlogo.com/logos/css-3.svg",
+  },
+  {
+    name: "JavaScript",
+    source: "https://cdn.worldvectorlogo.com/logos/logo-javascript.svg",
+  },
+  {
+    name: "TypeScript",
+    source: "https://cdn.worldvectorlogo.com/logos/typescript.svg",
+  },
+  {
+    name: "React",
+    source: "https://cdn.worldvectorlogo.com/logos/react-2.svg",
+  },
+  {
+    name: "Material UI",
+    source: "https://cdn.worldvectorlogo.com/logos/material-ui-1.svg",
+  },
+  {
+    name: "Bootstrap 5",
+    source: "https://cdn.worldvectorlogo.com/logos/bootstrap-5-1.svg",
+  },
+  {
+    name: "SASS",
+    source: "https://cdn.worldvectorlogo.com/logos/sass-1.svg",
+  },
+  {
+    name: "Semantic UI",
+    source: "https://cdn.worldvectorlogo.com/logos/semantic-ui.svg",
+  },
+];
+
+const backEndSkills: tImage[] = [
+  {
+    name: "NodeJS",
+    source: "https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg",
+  },
+  {
+    name: "ExpressJS",
+    source:
+      "https://e7.pngegg.com/pngimages/925/447/png-clipart-express-js-node-js-javascript-mongodb-node-js-text-trademark-thumbnail.png",
+  },
+  {
+    name: "Python",
+    source: "https://cdn.worldvectorlogo.com/logos/python-5.svg",
+  },
+  {
+    name: "Django",
+    source: "https://www.svgrepo.com/show/353657/django-icon.svg",
+  },
+  {
+    name: "PostgreSQL",
+    source: "https://cdn.worldvectorlogo.com/logos/postgresql.svg",
+  },
+  {
+    name: "SQLite",
+    source:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Sqlite-square-icon.svg/256px-Sqlite-square-icon.svg.png?20130711220928",
+  },
+  {
+    name: "Redis",
+    source: "https://cdn.worldvectorlogo.com/logos/redis.svg",
+  },
+];
+
+const mobileSkills = [
+  {
+    name: "Dart",
+    source: "https://cdn.worldvectorlogo.com/logos/dart.svg",
+  },
+  {
+    name: "Flutter",
+    source: "https://cdn.worldvectorlogo.com/logos/flutter-logo.svg",
+  },
+  {
+    name: "Android Studio",
+    source:
+      "https://seeklogo.com/images/A/android-studio-logo-1EE788C6EC-seeklogo.com.png",
+  },
+];
+
+const devOpsSkills = [
+  {
+    name: "Jest",
+    source:
+      "https://seeklogo.com/images/J/jest-logo-F9901EBBF7-seeklogo.com.png",
+  },
+  {
+    name: "Robot Framework",
+    source: "https://cdn.worldvectorlogo.com/logos/robot-framework.svg",
+  },
+  {
+    name: "Selenium",
+    source:
+      "https://seeklogo.com/images/S/selenium-logo-A1B53CEFB0-seeklogo.com.png",
+  },
+  {
+    name: "Git",
+    source: "https://cdn.worldvectorlogo.com/logos/git-icon.svg",
+  },
+  {
+    name: "GitHub",
+    source: "https://cdn.worldvectorlogo.com/logos/github-icon-1.svg",
+  },
+  {
+    name: "Bash",
+    source: "https://cdn.worldvectorlogo.com/logos/bash-2.svg",
+  },
+  {
+    name: "Docker",
+    source: "https://cdn.worldvectorlogo.com/logos/docker-4.svg",
+  },
+  {
+    name: "Vercel",
+    source:
+      "https://seeklogo.com/images/V/vercel-logo-F748E39008-seeklogo.com.png",
+  },
+  {
+    name: "Firebase",
+    source: "https://cdn.worldvectorlogo.com/logos/firebase-1.svg",
+  },
+  {
+    name: "VS Code",
+    source: "https://cdn.worldvectorlogo.com/logos/visual-studio-code-1.svg",
+  },
+];
+
+const uiuxSkills = [
+  {
+    name: "Figma",
+    source:
+      "https://seeklogo.com/images/F/figma-logo-E4E21D3AEA-seeklogo.com.png",
+  },
+  {
+    name: "Adobe Illustrator",
+    source:
+      "https://cdn.worldvectorlogo.com/logos/adobe-illustrator-cc-icon.svg",
+  },
+  {
+    name: "Canva",
+    source: "https://cdn.worldvectorlogo.com/logos/canva-1.svg",
+  },
+];
+
+const osSkills = [
+  {
+    name: "Windows",
+    source: "https://cdn.worldvectorlogo.com/logos/microsoft-windows-22.svg",
+  },
+  {
+    name: "Linux",
+    source: "https://cdn.worldvectorlogo.com/logos/linux-tux.svg",
+  },
+  {
+    name: "Ubuntu",
+    source: "https://cdn.worldvectorlogo.com/logos/ubuntu-4.svg",
+  },
+  {
+    name: "Android",
+    source: "https://seeklogo.com/images/A/android-new-2019-logo-3CD3BC571C-seeklogo.com.png",
+  },
+];
 
 const Skills = () => {
   return (
@@ -19,7 +190,9 @@ const Skills = () => {
         padding: "1.6rem",
       }}
     >
-      <Typography variant="h2" sx={{ color: "#FFFFFFF" }}>Skills</Typography>
+      <Typography variant="h2" sx={{ color: "#FFFFFFF" }}>
+        Skills
+      </Typography>
       <Grid container spacing={2} sx={{ rowGap: "1.6rem" }}>
         <Grid item xs={12} sm={6} md={4}>
           <Paper
@@ -50,51 +223,18 @@ const Skills = () => {
                 gap: 1,
               }}
             >
-              <img
-                src="https://cdn.worldvectorlogo.com/logos/html-1.svg"
-                alt="HTML5"
-                height={50}
-              />
-              <img
-                src="https://cdn.worldvectorlogo.com/logos/css-3.svg"
-                alt="CSS3"
-                height={50}
-              />
-              <img
-                src="https://cdn.worldvectorlogo.com/logos/logo-javascript.svg"
-                alt="Javascript"
-                height={50}
-              />
-              <img
-                src="https://cdn.worldvectorlogo.com/logos/typescript.svg"
-                alt="Typescript"
-                height={50}
-              />
-              <img
-                src="https://cdn.worldvectorlogo.com/logos/react-2.svg"
-                alt="React"
-                height={50}
-              />
-              <img
-                src="https://cdn.worldvectorlogo.com/logos/material-ui-1.svg"
-                alt="Material UI"
-                height={50}
-              />
-              <img
-                src="https://cdn.worldvectorlogo.com/logos/bootstrap-5-1.svg"
-                alt="Bootstrap 5"
-                height={50}
-              />
-              <img
-                src="https://cdn.worldvectorlogo.com/logos/sass-1.svg"
-                alt="SASS"
-                height={50}
-              />
-              <img
-                src="https://cdn.worldvectorlogo.com/logos/semantic-ui.svg"
-                alt="Semantic UI"
-                height={50}
-              />
+              {frontEndSkills.map((skill: tImage) => {
+                return (
+                  <Avatar
+                    src={skill.source}
+                    alt={skill.source}
+                    sx={{
+                      height: { xs: 30, sm: 40, md: 50 },
+                      width: { xs: 30, sm: 40, md: 50 },
+                    }}
+                  />
+                );
+              })}
             </Box>
           </Paper>
         </Grid>
@@ -127,41 +267,18 @@ const Skills = () => {
                 gap: 1,
               }}
             >
-              <img
-                src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg"
-                alt="NodeJS"
-                height={50}
-              />
-              <img
-                src="https://e7.pngegg.com/pngimages/925/447/png-clipart-express-js-node-js-javascript-mongodb-node-js-text-trademark-thumbnail.png"
-                alt="ExpressJS"
-                height={50}
-              />
-              <img
-                src="https://cdn.worldvectorlogo.com/logos/python-5.svg"
-                alt="Python"
-                height={50}
-              />
-              <img
-                src="https://cdn.worldvectorlogo.com/logos/django.svg"
-                alt="Django"
-                height={50}
-              />
-              <img
-                src="https://cdn.worldvectorlogo.com/logos/postgresql.svg"
-                alt="PostgreSQL"
-                height={50}
-              />
-              <img
-                src="https://cdn.worldvectorlogo.com/logos/sqlite.svg"
-                alt="SQLite"
-                height={50}
-              />
-              <img
-                src="https://cdn.worldvectorlogo.com/logos/redis.svg"
-                alt="Redis"
-                height={50}
-              />
+              {backEndSkills.map((skill: tImage) => {
+                return (
+                  <Avatar
+                    src={skill.source}
+                    alt={skill.source}
+                    sx={{
+                      height: { xs: 30, sm: 40, md: 50 },
+                      width: { xs: 30, sm: 40, md: 50 },
+                    }}
+                  />
+                );
+              })}
             </Box>
           </Paper>
         </Grid>
@@ -194,21 +311,18 @@ const Skills = () => {
                 gap: 1,
               }}
             >
-              <img
-                src="https://cdn.worldvectorlogo.com/logos/dart.svg"
-                alt="Dart"
-                height={50}
-              />
-              <img
-                src="https://cdn.worldvectorlogo.com/logos/flutter-logo.svg"
-                alt="Flutter"
-                height={50}
-              />
-              <img
-                src="https://seeklogo.com/images/A/android-studio-logo-1EE788C6EC-seeklogo.com.png"
-                alt="Android Studio"
-                height={50}
-              />
+              {mobileSkills.map((skill: tImage) => {
+                return (
+                  <Avatar
+                    src={skill.source}
+                    alt={skill.source}
+                    sx={{
+                      height: { xs: 30, sm: 40, md: 50 },
+                      width: { xs: 30, sm: 40, md: 50 },
+                    }}
+                  />
+                );
+              })}
             </Box>
           </Paper>
         </Grid>
@@ -241,56 +355,18 @@ const Skills = () => {
                 gap: 1,
               }}
             >
-              <img
-                src="https://seeklogo.com/images/J/jest-logo-F9901EBBF7-seeklogo.com.png"
-                alt="Jest"
-                height={50}
-              />
-              <img
-                src="https://cdn.worldvectorlogo.com/logos/robot-framework.svg"
-                alt="Robot Framework"
-                height={50}
-              />
-              <img
-                src="https://seeklogo.com/images/S/selenium-logo-A1B53CEFB0-seeklogo.com.png"
-                alt="Selenium"
-                height={50}
-              />
-              <img
-                src="https://cdn.worldvectorlogo.com/logos/git-icon.svg"
-                alt="Git"
-                height={50}
-              />
-              <img
-                src="https://cdn.worldvectorlogo.com/logos/github-icon-1.svg"
-                alt="GitHub"
-                height={50}
-              />
-              <img
-                src="https://cdn.worldvectorlogo.com/logos/bash-2.svg"
-                alt="Bash"
-                height={50}
-              />
-              <img
-                src="https://cdn.worldvectorlogo.com/logos/docker-4.svg"
-                alt="Docker"
-                height={50}
-              />
-              <img
-                src="https://seeklogo.com/images/V/vercel-logo-F748E39008-seeklogo.com.png"
-                alt="Vercel"
-                height={50}
-              />
-              <img
-                src="https://cdn.worldvectorlogo.com/logos/firebase-1.svg"
-                alt="Firebase"
-                height={50}
-              />
-              <img
-                src="https://cdn.worldvectorlogo.com/logos/visual-studio-code-1.svg"
-                alt="VS Code"
-                height={50}
-              />
+              {devOpsSkills.map((skill: tImage) => {
+                return (
+                  <Avatar
+                    src={skill.source}
+                    alt={skill.source}
+                    sx={{
+                      height: { xs: 30, sm: 40, md: 50 },
+                      width: { xs: 30, sm: 40, md: 50 },
+                    }}
+                  />
+                );
+              })}
             </Box>
           </Paper>
         </Grid>
@@ -323,21 +399,18 @@ const Skills = () => {
                 gap: 1,
               }}
             >
-              <img
-                src="https://seeklogo.com/images/F/figma-logo-E4E21D3AEA-seeklogo.com.png"
-                alt="Figma"
-                height={50}
-              />
-              <img
-                src="https://cdn.worldvectorlogo.com/logos/adobe-illustrator-cc-icon.svg"
-                alt="Adobe Illustrator"
-                height={50}
-              />
-              <img
-                src="https://cdn.worldvectorlogo.com/logos/canva-1.svg"
-                alt="Canva"
-                height={50}
-              />
+              {uiuxSkills.map((skill: tImage) => {
+                return (
+                  <Avatar
+                    src={skill.source}
+                    alt={skill.source}
+                    sx={{
+                      height: { xs: 30, sm: 40, md: 50 },
+                      width: { xs: 30, sm: 40, md: 50 },
+                    }}
+                  />
+                );
+              })}
             </Box>
           </Paper>
         </Grid>
@@ -370,26 +443,18 @@ const Skills = () => {
                 gap: 1,
               }}
             >
-              <img
-                src="https://cdn.worldvectorlogo.com/logos/microsoft-windows-22.svg"
-                alt="Windows"
-                height={50}
-              />
-              <img
-                src="https://cdn.worldvectorlogo.com/logos/linux-tux.svg"
-                alt="Linux"
-                height={50}
-              />
-              <img
-                src="https://cdn.worldvectorlogo.com/logos/ubuntu-4.svg"
-                alt="Ubuntu"
-                height={50}
-              />
-              <img
-                src="https://cdn.worldvectorlogo.com/logos/android.svg"
-                alt="Android"
-                height={50}
-              />
+              {osSkills.map((skill: tImage) => {
+                return (
+                  <Avatar
+                    src={skill.source}
+                    alt={skill.source}
+                    sx={{
+                      height: { xs: 30, sm: 40, md: 50 },
+                      width: { xs: 30, sm: 40, md: 50 },
+                    }}
+                  />
+                );
+              })}
             </Box>
           </Paper>
         </Grid>
