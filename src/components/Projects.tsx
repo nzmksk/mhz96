@@ -88,10 +88,9 @@ const Projects = (props: iRepositoryProps) => {
       <Stack spacing={2}>
         <Pagination
           count={pageCount}
+          color="primary"
           page={currentPage}
           onChange={handlePageChange}
-          showFirstButton
-          showLastButton
         />
       </Stack>
     </Container>
