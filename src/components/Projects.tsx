@@ -69,7 +69,9 @@ const Projects = (props: iRepositoryProps) => {
               }}
             >
               <CardContent>
-                <Typography>{repository.name}</Typography>
+                <Typography variant="h4" sx={{ textAlign: "center" }}>
+                  {repository.name}
+                </Typography>
                 <Typography variant="h6">{repository.description}</Typography>
                 <Typography>Created at: {repository.created_at}</Typography>
                 <Typography>Updated at: {repository.pushed_at}</Typography>
