@@ -62,30 +62,20 @@ function App() {
         );
         const repositories: any = await response.json();
 
-        // Filter repositories without description or languages.
-        const filteredRepositories: tRepository[] = repositories.filter(
-          (repo: tRepository) => {
-            return repo.description && repo.language;
-          }
-        );
-        filteredRepositories.sort(function (a: tRepository, b: tRepository) {
+        repositories.sort(function (a: tRepository, b: tRepository) {
           let updated_at_a: number = new Date(a.pushed_at).getTime();
           let updated_at_b: number = new Date(b.pushed_at).getTime();
           return updated_at_b - updated_at_a;
         });
 
-        // Show only the latest 6 repositories.
-        const topSixRepositories: tRepository[] = filteredRepositories.slice(
-          0,
-          6
-        );
-        topSixRepositories.map((repo: tRepository) => {
+        repositories.map((repo: tRepository) => {
           repo.created_at = new Date(repo.created_at).toUTCString();
           repo.pushed_at = new Date(repo.pushed_at).toUTCString();
 
           return repo;
         });
-        setRepositories(topSixRepositories);
+
+        setRepositories(repositories);
       } catch (error: unknown) {
         console.error(error);
       }
