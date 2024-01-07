@@ -24,25 +24,37 @@ const Projects = (props: iRepositoryProps) => {
   };
 
   return (
-    <>
-      <Typography sx={{ display: "block", width: "100%", textAlign: "center" }}>
+    <Container
+      component="section"
+      id="Projects"
+      sx={{
+        backgroundColor: "#FFFFFF",
+        color: "#C62828",
+        display: "flex",
+        flexDirection: "column",
+        flexWrap: "wrap",
+        justifyContent: "space-between",
+        alignItems: "center",
+        minWidth: "100%",
+        minHeight: { xs: "calc(100vh - 56px)", sm: "calc(100vh - 68px)" },
+        padding: "1.6rem",
+      }}
+    >
+      <Typography
+        variant="h2"
+        sx={{ display: "block", width: "100%", textAlign: "center" }}
+      >
         Projects
       </Typography>
       <Container
-        component="section"
-        id="Projects"
+        component="div"
         sx={{
-          backgroundColor: "#FFFFFF",
-          color: "#C62828",
           display: "flex",
           flexDirection: "row",
-          flexWrap: "wrap",
-          justifyContent: "left",
-          alignItems: "left",
-          minWidth: "200%",
-          minHeight: { xs: "calc(100vh - 56px)", sm: "calc(100vh - 68px)" },
+          flexWrap: "nowrap",
+          justifyContent: "center",
           overflowX: "hidden",
-          padding: "1.6rem",
+          flexGrow: 1,
         }}
       >
         {displayedRepositories.currentData().map((repository: tRepository) => {
@@ -58,7 +70,7 @@ const Projects = (props: iRepositoryProps) => {
             >
               <CardContent>
                 <Typography>{repository.name}</Typography>
-                <Typography>{repository.description}</Typography>
+                <Typography variant="h6">{repository.description}</Typography>
                 <Typography>Created at: {repository.created_at}</Typography>
                 <Typography>Updated at: {repository.pushed_at}</Typography>
                 <Typography>{repository.language}</Typography>
@@ -82,7 +94,7 @@ const Projects = (props: iRepositoryProps) => {
           showLastButton
         />
       </Stack>
-    </>
+    </Container>
   );
 };
 
