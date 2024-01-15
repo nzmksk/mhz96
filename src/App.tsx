@@ -61,31 +61,31 @@ function App() {
           `https://api.github.com/users/nzmksk/repos`
         );
         const repositories: any = await response.json();
+        const excludedRepos: string[] = ["notes", "nzmksk"];
 
-        // Filter repositories without description or languages.
-        const filteredRepositories: tRepository[] = repositories.filter(
-          (repo: tRepository) => {
-            return repo.description && repo.language;
-          }
-        );
-        filteredRepositories.sort(function (a: tRepository, b: tRepository) {
+        const filteredRepos = repositories.filter((repo: tRepository) => {
+          return !excludedRepos.includes(repo.name);
+        });
+
+        filteredRepos.sort(function (a: tRepository, b: tRepository) {
           let updated_at_a: number = new Date(a.pushed_at).getTime();
           let updated_at_b: number = new Date(b.pushed_at).getTime();
           return updated_at_b - updated_at_a;
         });
 
-        // Show only the latest 6 repositories.
-        const topSixRepositories: tRepository[] = filteredRepositories.slice(
-          0,
-          6
-        );
-        topSixRepositories.map((repo: tRepository) => {
+        filteredRepos.map((repo: tRepository) => {
+          const stringArray: string[] = repo.name.split(/[-_]/g);
+          const formattedArray = stringArray.map((word: string) => {
+            return word.charAt(0).toUpperCase() + word.slice(1);
+          });
+          repo.name = formattedArray.join(" ");
           repo.created_at = new Date(repo.created_at).toUTCString();
           repo.pushed_at = new Date(repo.pushed_at).toUTCString();
 
           return repo;
         });
-        setRepositories(topSixRepositories);
+
+        setRepositories(filteredRepos);
       } catch (error: unknown) {
         console.error(error);
       }
@@ -200,7 +200,7 @@ function App() {
           sx={{
             width: "100vw",
             height: "100vh",
-            overflow: "auto",
+            overflowX: "hidden",
           }}
         >
           <Toolbar id="Home" sx={{ visibility: "hidden" }} />
